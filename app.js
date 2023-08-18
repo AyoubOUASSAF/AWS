@@ -1,12 +1,15 @@
+// app.js
 const http = require('http');
 
+const hostname = '0.0.0.0'; // Listen on all available network interfaces
+const port = 3000;
+
 const server = http.createServer((req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello, Node.js on AWS EC2!');
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello, World!\n');
 });
 
-const PORT = 80;
-const HOST = '15.160.71.160'; // This makes the server accessible externally
-server.listen(PORT, HOST, () => {
-  console.log(`Server running at http://${HOST}:${PORT}`);
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
